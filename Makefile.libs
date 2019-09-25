@@ -28,7 +28,7 @@ lib/%.c: lib/%.stub
 	$(CHIBI_FFI) $<
 
 lib/%$(SO): lib/%.c
-	$(CC) $(CLIBFLAGS) $(CLINKFLAGS) $(XCPPFLAGS) $(XCFLAGS) $(LDFLAGS) -o $@ $< -L$(CHIBI_LOCATION_PATH) $(RLDFLAGS) $(XLIBS) -lchibi-scheme
+	$(CC) $(CLIBFLAGS) $(CLINKFLAGS) $(XCPPFLAGS) $(XCFLAGS) -Os $(LDFLAGS) -o $@ $< -L$(CHIBI_LOCATION_PATH) $(RLDFLAGS) $(XLIBS) -lchibi-scheme
 
 clean-libs:
 	$(RM) $(COMPILED_LIBS)
