@@ -23,7 +23,7 @@ include Makefile.libs
 
 all: $(COMPILED_LIBS) # $(META_FILES)
 
-#lib/.%.meta: lib/sdbi/connector/ffi/sqlite3/sqlite3.sld
+#lib/.%.meta: lib/sdbi/connector/ffi/sqlite3.sld
 #	-$(FIND) $< -name \*.sld | \
 #	 $(CHIBI) $(CHIBI_LOCATION_PATH)/tools/generate-install-meta.scm $(VERSION) > $@
 
