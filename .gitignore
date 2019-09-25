@@ -1,0 +1,46 @@
+# Object files
+*.o
+*.bc
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.dll.*
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+
+# Snow Meta files
+lib/.*.meta
+
+# Generated files
+lib/connector/ffi/sqlite3/sqlite3.c
+*.tgz
+*.html
+*.img
+*.err
+*.fasl
+!index.html
