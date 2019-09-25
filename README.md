@@ -1,2 +1,11 @@
 # sdbi-chibi
 Chibi Scheme implementation of sdbi
+
+The Makefile does not assume an installed Chibi Scheme is the correct
+version to build from, you must set the environment variable
+CHIBI_LOCATION_PATH to the desired location.
+
+Without modifying your environment, with gmake being Gnu Make or some
+sort of alias to it, you could execute something like this using bash:
+
+CHIBI_LOCATION_PATH=/home/src/chibi-scheme gmake
