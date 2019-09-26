@@ -24,7 +24,8 @@
             (test '(#(1 "Hello, world")) (sqlite3-select db "SELECT * FROM test WHERE id = 1"))
             (test '() (sqlite3-select db "SELECT * FROM test WHERE id = 2"))
             (test 0 (sqlite3-exec db "DROP TABLE test"))
-            (test-error (sqlite3-select db "SELECT * FROM test WHERE id = 2"))
+            (test-error (sqlite3-select db "SELECT * FROM test WHERE id = 1"))
+            ;; ~~~~ do a close here
             )
 
 
