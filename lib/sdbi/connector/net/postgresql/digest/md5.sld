@@ -29,7 +29,7 @@
 ;;;  
 
 ;; TODO should we return string???
-(define-library (postgresql digest md5)
+(define-library (sdbi connector net postgresql digest md5)
   (import (scheme base))
   (cond-expand
    (sagittarius
@@ -54,7 +54,7 @@
      ((library (srfi 33))
       (import (srfi 33)))
      (else (begin (error '(digest md5) "bitwise library is required"))))
-    (import (postgresql misc bytevectors))
+    (import (sdbi connector net postgresql misc bytevectors))
     (include "md5.scm")
     #;
     (begin

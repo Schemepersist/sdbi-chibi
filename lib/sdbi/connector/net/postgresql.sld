@@ -29,8 +29,8 @@
 ;;;  
 
 ;; forwarding
-(define-library (postgresql)
-  (import (postgresql apis))
+(define-library (sdbi connector net postgresql)
+  (import (sdbi connector net postgresql apis))
   (export make-postgresql-connection
 	  postgresql-connection?
 	  postgresql-open-connection!

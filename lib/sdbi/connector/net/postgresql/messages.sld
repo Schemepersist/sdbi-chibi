@@ -28,7 +28,7 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
 
-(define-library (postgresql messages)
+(define-library (sdbi connector net postgresql messages)
   (export postgresql-send-startup-message
 	  postgresql-send-password-message
 	  postgresql-send-terminate-message
@@ -46,9 +46,9 @@
 	  postgresql-read-response)
   (import (scheme base) 
 	  (scheme write)
-	  (postgresql misc socket)
-	  (postgresql misc bytevectors)
-	  (postgresql misc io))
+	  (sdbi connector net postgresql misc socket)
+	  (sdbi connector net postgresql misc bytevectors)
+	  (sdbi connector net postgresql misc io))
   (cond-expand
    ((library (srfi 19))
     (import (srfi 19)))
