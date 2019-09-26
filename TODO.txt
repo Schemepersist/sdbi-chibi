@@ -3,3 +3,182 @@ directives, like "(c-link "sqlite3")".
 
 Where did -Os come from.
 
+Include internal PostgeSQL procedure tests from original that failed
+in snow-chibi install:
+
+[begin]
+SRFI 19: 
+    [Existence Check] Constants: ......
+    6 out of 6 (100.0%) tests passed in 0.00029397010803222656 seconds.
+    [Existence Check] Clock Procedures: .....
+    5 out of 5 (100.0%) tests passed in 0.0002791881561279297 seconds.
+    [Existence Check] Time object and accessors: .........
+    9 out of 9 (100.0%) tests passed in 0.00034618377685546875 seconds.
+    [Existence Check] Time comparison procedures: .....
+    5 out of 5 (100.0%) tests passed in 0.00020384788513183594 seconds.
+    [Existence Check] Time arithmetic procedures: ......
+    6 out of 6 (100.0%) tests passed in 0.00024199485778808594 seconds.
+    [Existence Check] Date object and accessors: .............
+    13 out of 13 (100.0%) tests passed in 0.0005860328674316406 seconds.
+    [Existence Check] Time/Date/Julian Day/Modified Julian Day Converters: ...
+    ...............................
+    34 out of 34 (100.0%) tests passed in 0.001255035400390625 seconds.
+    [Existence Check] Date to String/String to Date Converters: ..
+    2 out of 2 (100.0%) tests passed in 0.00010180473327636719 seconds.
+    [SRFI Tests] Creating time structures: ......
+    6 out of 6 (100.0%) tests passed in 0.000308990478515625 seconds.
+    [SRFI Tests] Testing time resolutions: .....
+    5 out of 5 (100.0%) tests passed in 0.0002110004425048828 seconds.
+    [SRFI Tests] Time comparisons (time=?, etc.): ..............
+    14 out of 14 (100.0%) tests passed in 0.0005919933319091797 seconds.
+    [SRFI Tests] Time difference: ..
+    2 out of 2 (100.0%) tests passed in 0.0001289844512939453 seconds.
+    [SRFI Tests] TAI-UTC Conversions: ..........................
+    26 out of 26 (100.0%) tests passed in 0.0020978450775146484 seconds.
+    [SRFI Tests] TAI-Date Conversions: ....
+    4 out of 4 (100.0%) tests passed in 0.0002560615539550781 seconds.
+    [SRFI Tests] Date-UTC Conversions: .....
+    5 out of 5 (100.0%) tests passed in 0.0038499832153320312 seconds.
+    [SRFI Tests] TZ Offset conversions: ..
+    2 out of 2 (100.0%) tests passed in 0.000125885009765625 seconds.
+    Creating date structures: ......
+    6 out of 6 (100.0%) tests passed in 0.0003440380096435547 seconds.
+    Creating time structures: ......
+    6 out of 6 (100.0%) tests passed in 0.00035691261291503906 seconds.
+    Clock resolution: ......
+    6 out of 6 (100.0%) tests passed in 0.0002799034118652344 seconds.
+    Time object and accessors: ...............
+    15 out of 15 (100.0%) tests passed in 0.0007231235504150391 seconds.
+    Time comparison procedures: ...............
+    15 out of 15 (100.0%) tests passed in 0.0007781982421875 seconds.
+    Time arithmetic procedures: 
+        (time-difference): .......
+        7 out of 7 (100.0%) tests passed in 0.0004019737243652344 seconds.
+        (time-difference!): .......
+        7 out of 7 (100.0%) tests passed in 0.00039196014404296875 seconds.
+        (add-duration): ....
+        4 out of 4 (100.0%) tests passed in 0.0002238750457763672 seconds.
+        (add-duration!): ....
+        4 out of 4 (100.0%) tests passed in 0.00021600723266601562 seconds.
+        (subtract-duration): ....
+        4 out of 4 (100.0%) tests passed in 0.00022602081298828125 seconds.
+        (subtract-duration!): ....
+        4 out of 4 (100.0%) tests passed in 0.0002231597900390625 seconds.
+    30 out of 30 (100.0%) tests passed in 0.002171039581298828 seconds.
+    6 out of 6 (100.0%) subgroups passed.
+    Date object and accessors: .........................
+    25 out of 25 (100.0%) tests passed in 0.0010449886322021484 seconds.
+    Time/Date/Julian Day/Modified Julian Day Converters: 
+        date->julian-day: .
+        1 out of 1 (100.0%) test passed in 7.915496826171875e-05 seconds.
+        date->modified-julian-day: .
+        1 out of 1 (100.0%) test passed in 6.985664367675781e-05 seconds.
+        date->time-monotonic: ..
+        2 out of 2 (100.0%) tests passed in 0.00011992454528808594 seconds.
+        date->time-tai: ..
+        2 out of 2 (100.0%) tests passed in 0.00011491775512695312 seconds.
+        date->time-utc: .
+        1 out of 1 (100.0%) test passed in 6.914138793945312e-05 seconds.
+.        julian-day->date: .......
+        7 out of 7 (100.0%) tests passed in 0.0003139972686767578 seconds.
+        julian-day->time-monotonic: ..
+        2 out of 2 (100.0%) tests passed in 0.00010704994201660156 seconds.
+        julian-day->time-tai: ..
+        2 out of 2 (100.0%) tests passed in 0.00022101402282714844 seconds.
+        julian-day->time-utc: ..
+        2 out of 2 (100.0%) tests passed in 0.00010704994201660156 seconds.
+        modified-julian-day->date: .xxx...
+        4 out of 7 (57.1%) tests passed in 0.0003199577331542969 seconds.
+        3 failures (42.9%).
+        FAIL: (modified-julian-day->date) for 1st January 2017 (year)
+            expected 2017 but got 2016
+    on line 730 of file "/tmp/pkg-6445-1569507385-0/run-tests.scm"
+(date-year target-date)
+        FAIL: (modified-julian-day->date) for 1st January 2017 (month)
+            expected 1 but got 12
+    on line 732 of file "/tmp/pkg-6445-1569507385-0/run-tests.scm"
+(date-month target-date)
+        FAIL: (modified-julian-day->date) for 1st January 2017 (day)
+            expected 1 but got 31
+    on line 734 of file "/tmp/pkg-6445-1569507385-0/run-tests.scm"
+(date-day target-date)
+        modified-julian-day->time-monotonic: ..
+        2 out of 2 (100.0%) tests passed in 0.00011491775512695312 seconds.
+        modified-julian-day->time-tai: ..
+        2 out of 2 (100.0%) tests passed in 0.0001850128173828125 seconds.
+        modified-julian-day->time-utc: ..
+        2 out of 2 (100.0%) tests passed in 0.00015497207641601562 seconds.
+        time-monotonic->date: .xxx...
+        4 out of 7 (57.1%) tests passed in 0.0004940032958984375 seconds.
+        3 failures (42.9%).
+        FAIL: (time-monotonic->date) returns correct value
+            expected 1970 but got 1969
+    on line 766 of file "/tmp/pkg-6445-1569507385-0/run-tests.scm"
+(date-year (time-monotonic->date monotime))
+        FAIL: (time-monotonic->date) returns correct value
+            expected 1 but got 12
+    on line 768 of file "/tmp/pkg-6445-1569507385-0/run-tests.scm"
+(date-month (time-monotonic->date monotime))
+        FAIL: (time-monotonic->date) returns correct value
+            expected 1 but got 31
+    on line 770 of file "/tmp/pkg-6445-1569507385-0/run-tests.scm"
+(date-day (time-monotonic->date monotime))
+        time-monotonic->julian-day: ..
+        2 out of 2 (100.0%) tests passed in 0.00027108192443847656 seconds.
+        time-monotonic->modified-julian-day: ..
+        2 out of 2 (100.0%) tests passed in 0.0001850128173828125 seconds.
+        time-monotonic->time-tai: ..
+        2 out of 2 (100.0%) tests passed in 0.00021505355834960938 seconds.
+        time-monotonic->time-tai!: ..
+        2 out of 2 (100.0%) tests passed in 0.00020599365234375 seconds.
+        time-monotonic->time-utc: ..
+        2 out of 2 (100.0%) tests passed in 0.00021386146545410156 seconds.
+        time-monotonic->time-utc!: ..
+        2 out of 2 (100.0%) tests passed in 0.0004730224609375 seconds.
+        time-tai->date: .......
+        7 out of 7 (100.0%) tests passed in 0.000431060791015625 seconds.
+        time-tai->julian-day: ..
+        2 out of 2 (100.0%) tests passed in 0.0001201629638671875 seconds.
+        time-tai->modified-julian-day: ..
+        2 out of 2 (100.0%) tests passed in 0.00011610984802246094 seconds.
+        time-tai->time-monotonic: ..
+        2 out of 2 (100.0%) tests passed in 0.0001201629638671875 seconds.
+        time-tai->time-monotonic!: ..
+        2 out of 2 (100.0%) tests passed in 0.00011205673217773438 seconds.
+        time-tai->time-utc: ..
+        2 out of 2 (100.0%) tests passed in 0.00012183189392089844 seconds.
+        time-tai->time-utc!: ..
+        2 out of 2 (100.0%) tests passed in 0.00011515617370605469 seconds.
+        time-utc->date: .......
+        7 out of 7 (100.0%) tests passed in 0.00037097930908203125 seconds.
+        time-utc->julian-day: ..
+        2 out of 2 (100.0%) tests passed in 0.00010704994201660156 seconds.
+        time-utc->modified-julian-day: ..
+        2 out of 2 (100.0%) tests passed in 0.00010895729064941406 seconds.
+        time-utc->time-monotonic: ..
+        2 out of 2 (100.0%) tests passed in 0.0001430511474609375 seconds.
+        time-utc->time-monotonic!: ..
+        2 out of 2 (100.0%) tests passed in 0.00011420249938964844 seconds.
+        time-utc->time-tai: ..
+        2 out of 2 (100.0%) tests passed in 0.00011587142944335938 seconds.
+        time-utc->time-tai!: ..
+        2 out of 2 (100.0%) tests passed in 0.00011301040649414062 seconds.
+    85 out of 91 (93.4%) tests passed in 0.014876127243041992 seconds.
+    6 failures (6.6%).
+    32 out of 34 (94.1%) subgroups passed.
+    Date to String/String to Date Converters: 
+        Standard date->string directives: ....................................
+        ........
+        44 out of 44 (100.0%) tests passed in 0.0037980079650878906 seconds.
+        Non-standard date->string directives: ................................
+        32 out of 32 (100.0%) tests passed in 0.0019609928131103516 seconds.
+        Standard string->date directives: ...
+        3 out of 3 (100.0%) tests passed in 0.0005331039428710938 seconds.
+    79 out of 79 (100.0%) tests passed in 0.006492137908935547 seconds.
+    3 out of 3 (100.0%) subgroups passed.
+    Round-tripping: ...
+    3 out of 3 (100.0%) tests passed in 0.00019121170043945312 seconds.
+414 out of 420 (98.6%) tests passed in 0.2819070816040039 seconds.
+6 failures (1.4%).
+25 out of 26 (96.2%) subgroups passed.
+[end]
