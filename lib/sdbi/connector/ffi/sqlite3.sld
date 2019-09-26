@@ -20,6 +20,9 @@
    sqlite3-select sqlite3-get sqlite3-do sqlite3-fold
    ;; ssql
    ssql->sql sqlite3-lambda sqlite3-loop
+
+   ;; new
+   sqlite3-db?
    )
   (import (scheme base) (scheme write) (srfi 130))
   (include-shared "sqlite3/sqlite3")

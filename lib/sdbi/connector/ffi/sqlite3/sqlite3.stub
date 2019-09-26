@@ -27,6 +27,7 @@
 ;;> A connection to an sqlite3 database. Closes on gc.
 
 (define-c-struct sqlite3
+  predicate: sqlite3-db?
   finalizer: sqlite3_close)
 
 ;;> A prepared sqlite3 statement. Finalizes on gc.
