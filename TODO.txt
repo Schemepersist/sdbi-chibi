@@ -1,0 +1,5 @@
+Libraries for stub files to link against are found in c-link
+directives, like "(c-link "sqlite3")".
+
+Where did -Os come from.
+
