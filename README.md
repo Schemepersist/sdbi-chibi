@@ -1,5 +1,5 @@
 # sdbi-chibi
-Chibi Scheme implementation of sdbi
+Chibi Scheme implementation of the Scheme Database Interface (sdbi)
 
 The Makefile does not assume an installed Chibi Scheme is the correct
 version to build from, you must set the environment variable
