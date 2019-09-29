@@ -114,14 +114,11 @@
 
 ;; ~~~~ Oh so dangerous if you don't get the casts right....
 
-#|
 (c-declare
-"CassError cass_value_get_string_return ( CassValue* the_value, char* the_string, size_t the_length ) {
-  return cass_value_get_string((const CassValue*) the_value, (const char **) &the_string, &the_length);
+"CassError cass_value_get_string_return ( CassValue* the_value, char** the_string, size_t* the_length ) {
+  return cass_value_get_string((const CassValue*) the_value, (const char **) the_string, the_length);
   }
 ")
 
 (define-c CassError (cass-value-get-string cass_value_get_string_return)
-  ((pointer CassValue) (result string) (result int)))
-|#
-
+  ((pointer CassValue) (result string) (result size_t)))
