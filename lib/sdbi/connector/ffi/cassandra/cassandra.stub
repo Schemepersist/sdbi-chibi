@@ -15,9 +15,11 @@
   CASS_OK
   )
 
+(define-c-int-type CassError)
+
 ;;> A Cassandra cluster's configuration. Closes on gc.
 
-(define-c-struct CassCluster
+(define-c-type CassCluster
   predicate: cass-cluster?
   finalizer: cass_cluster_free)
 
@@ -38,6 +40,9 @@
   predicate: cass-session?
   finalizer: cass_session_free)
 
+(define-c CassSession (cass-session-new cass_session_new) ())
+
+
 ;;> "The future result of an operation.  It can represent a result if
 ;;> the operation completed successfully or an error if the operation
 ;;> failed. It can be waited on, polled or a callback can be
@@ -48,3 +53,9 @@
 (define-c-struct CassFuture
   predicate: cass-future?
   finalizer: cass_future_free)
+
+
+
+(define-c CassError
+  (cass-cluster-set-contact-points cass_cluster_set_contact_points)
+  ((pointer CassCluster) string))

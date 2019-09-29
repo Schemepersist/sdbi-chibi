@@ -5,6 +5,11 @@
 
    ;; basic API
    cass-cluster-new cass-cluster?
+   cass-cluster-new cass-cluster?
+
+
+
+   cass-cluster-set-contact-points
 
 
 
