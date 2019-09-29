@@ -5,11 +5,16 @@
 
    ;; basic API
    cass-cluster-new cass-cluster?
-   cass-cluster-new cass-cluster?
+   cass-session-new cass-session?
+   cass-future? cass-statement? cass-result? cass-row? cass-value?
 
 
 
    cass-cluster-set-contact-points
+   cass-session-connect
+   cass-future-error-code
+   cass-statement-new
+   cass-session-execute
 
 
 

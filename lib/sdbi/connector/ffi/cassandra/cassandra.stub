@@ -1,9 +1,9 @@
+;; Apache Cassandra stub file
 
 (c-system-include "cassandra.h")
 (c-link "cassandra")
 
-;; See https://docs.datastax.com/en/developer/cpp-driver/2.13/topics/
-;; for an overview of the CassCluster and CassSession objects.
+(define-c-int-type CassError)
 
 (define-syntax define-consts
   (syntax-rules ()
@@ -15,7 +15,9 @@
   CASS_OK
   )
 
-(define-c-int-type CassError)
+
+;; See https://docs.datastax.com/en/developer/cpp-driver/2.13/topics/
+;; for an overview of the CassCluster and CassSession objects.
 
 ;;> A Cassandra cluster's configuration. Closes on gc.
 
@@ -36,7 +38,7 @@
 ;;> free a session in a future callback. Freeing a session in a future
 ;;> callback will cause a deadlock."
 
-(define-c-struct CassSession
+(define-c-type CassSession
   predicate: cass-session?
   finalizer: cass_session_free)
 
@@ -50,12 +52,48 @@
 
 ;;> ~~~~ or should we manually close it??
 
-(define-c-struct CassFuture
+(define-c-type CassFuture
   predicate: cass-future?
   finalizer: cass_future_free)
 
+(define-c-type CassStatement
+  predicate: cass-statement?
+  finalizer: cass_statement_free)
+
+(define-c-type CassResult
+  predicate: cass-result?
+  finalizer: cass_result_free)
+
+(define-c-type CassRow
+  predicate: cass-row?
+  ;; finalizer: cass_row_free ~~~~ seems there's no one free function for it
+  )
+
+(define-c-type CassValue
+  predicate: cass-value?
+  ;; finalizer: cass_value_free ~~~~ seems there's no one free function for it
+  )
 
 
-(define-c CassError
-  (cass-cluster-set-contact-points cass_cluster_set_contact_points)
+
+(define-c CassError (cass-cluster-set-contact-points cass_cluster_set_contact_points)
   ((pointer CassCluster) string))
+
+(define-c CassFuture (cass-session-connect cass_session_connect)
+  ((pointer CassSession) (pointer CassCluster)))
+
+(define-c CassError (cass-future-error-code cass_future_error_code)
+  ((pointer CassFuture)))
+
+(define-c CassStatement (cass-statement-new cass_statement_new)
+  (string size_t))
+
+(define-c CassFuture (cass-session-execute cass_session_execute)
+  ((pointer CassSession) (pointer CassStatement)))
+
+;; (define-c (const CassResult) (cass-future-get-result cass_future_get_result)
+;;  ((pointer CassFuture)))
+
+;;(define-c CassValue (cass-row-get-column-by-name cass_row_get_column_by_name)
+;;  ((pointer CassRow) (const string)))
+
