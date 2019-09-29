@@ -1,0 +1,12 @@
+
+(c-system-include "cassandra.h")
+(c-link "cassandra")
+
+;; See https://docs.datastax.com/en/developer/cpp-driver/2.13/topics/
+;; for an overview of the CassCluster and CassSession objects.
+;;
+;; Per that, the CassSession object provides connection pooling, " An
+;; application should create a single session object per keyspace as a
+;; session object is designed to be created once, reused, and shared
+;; by multiple threads within the application.
+
