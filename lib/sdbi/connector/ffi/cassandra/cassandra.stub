@@ -91,9 +91,37 @@
 (define-c CassFuture (cass-session-execute cass_session_execute)
   ((pointer CassSession) (pointer CassStatement)))
 
-;; (define-c (const CassResult) (cass-future-get-result cass_future_get_result)
-;;  ((pointer CassFuture)))
+;; Turns out the C FFI doesn't handle the const modifier well, looks
+;; like you have to use the pattern below copied from sqlite3.stub
 
-;;(define-c CassValue (cass-row-get-column-by-name cass_row_get_column_by_name)
-;;  ((pointer CassRow) (const string)))
+(c-declare
+"CassResult* cass_future_get_result_return ( CassFuture * future ) {
+  return (CassResult *) cass_future_get_result ( future );
+  }
+")
+
+(define-c CassResult (cass-future-get-result cass_future_get_result_return)
+  ((pointer CassFuture)))
+
+(c-declare
+"CassValue* cass_row_get_column_by_name_return ( CassRow* row, char* name ) {
+  return (CassValue *) cass_row_get_column_by_name ( (const CassRow *) row, (const char *) name );
+  }
+")
+
+(define-c CassValue (cass-row-get-column-by-name cass_row_get_column_by_name_return)
+  ((pointer CassRow) string))
+
+;; ~~~~ Oh so dangerous if you don't get the casts right....
+
+#|
+(c-declare
+"CassError cass_value_get_string_return ( CassValue* the_value, char* the_string, size_t the_length ) {
+  return cass_value_get_string((const CassValue*) the_value, (const char **) &the_string, &the_length);
+  }
+")
+
+(define-c CassError (cass-value-get-string cass_value_get_string_return)
+  ((pointer CassValue) (result string) (result int)))
+|#
 
