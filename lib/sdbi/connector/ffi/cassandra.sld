@@ -9,12 +9,15 @@
    cass-future? cass-statement? cass-result? cass-row? cass-value?
 
 
-
    cass-cluster-set-contact-points
    cass-session-connect
    cass-future-error-code
    cass-statement-new
    cass-session-execute
+   cass-future-get-result
+   cass-result-first-row
+   cass-row-get-column-by-name
+   cass-value-get-string
 
 
 

@@ -75,15 +75,18 @@
   )
 
 
+;; ~~~~ Note, it looks like checking the error code with this function
+;; is required before you can use a future!
+
+(define-c CassError (cass-future-error-code cass_future_error_code)
+  ((pointer CassFuture)))
+
 
 (define-c CassError (cass-cluster-set-contact-points cass_cluster_set_contact_points)
   ((pointer CassCluster) string))
 
 (define-c CassFuture (cass-session-connect cass_session_connect)
   ((pointer CassSession) (pointer CassCluster)))
-
-(define-c CassError (cass-future-error-code cass_future_error_code)
-  ((pointer CassFuture)))
 
 (define-c CassStatement (cass-statement-new cass_statement_new)
   (string size_t))
@@ -102,6 +105,15 @@
 
 (define-c CassResult (cass-future-get-result cass_future_get_result_return)
   ((pointer CassFuture)))
+
+(c-declare
+"CassRow* cass_result_first_row_return ( CassResult* the_result ) {
+  return (CassRow *) cass_result_first_row ( (const CassResult *) the_result );
+  }
+")
+
+(define-c CassRow (cass-result-first-row cass_result_first_row_return)
+  ((pointer CassResult)))
 
 (c-declare
 "CassValue* cass_row_get_column_by_name_return ( CassRow* row, char* name ) {
