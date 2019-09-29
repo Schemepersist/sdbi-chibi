@@ -4,9 +4,47 @@
 
 ;; See https://docs.datastax.com/en/developer/cpp-driver/2.13/topics/
 ;; for an overview of the CassCluster and CassSession objects.
-;;
-;; Per that, the CassSession object provides connection pooling, " An
-;; application should create a single session object per keyspace as a
-;; session object is designed to be created once, reused, and shared
-;; by multiple threads within the application.
 
+(define-syntax define-consts
+  (syntax-rules ()
+    ((define-consts type name ...)
+     (begin
+       (define-c-const type name) ...))))
+
+(define-consts int
+  CASS_OK
+  )
+
+;;> A Cassandra cluster's configuration. Closes on gc.
+
+(define-c-struct CassCluster
+  predicate: cass-cluster?
+  finalizer: cass_cluster_free)
+
+(define-c CassCluster (cass-cluster-new cass_cluster_new) ())
+
+
+;;> A Cassandra session, provides connection pooling, "An application
+;;> should create a single session object per keyspace as a session
+;;> object is designed to be created once, reused, and shared by
+;;> multiple threads within the application."  Closes on gc.
+
+;;> On free, "if the session is still connected it will be
+;;> synchronously closed before being deallocated.  Important: Do not
+;;> free a session in a future callback. Freeing a session in a future
+;;> callback will cause a deadlock."
+
+(define-c-struct CassSession
+  predicate: cass-session?
+  finalizer: cass_session_free)
+
+;;> "The future result of an operation.  It can represent a result if
+;;> the operation completed successfully or an error if the operation
+;;> failed. It can be waited on, polled or a callback can be
+;;> attached."  Closes on gc.
+
+;;> ~~~~ or should we manually close it??
+
+(define-c-struct CassFuture
+  predicate: cass-future?
+  finalizer: cass_future_free)
