@@ -1,4 +1,4 @@
-(define-library (sdbi connector ffi cassandra)
+(define-library (srfi sdbi connector cassandra-ffi)
   (export
    ;; constants
    CASS_OK
@@ -26,6 +26,6 @@
   (import (scheme base)
           ;; (scheme write)
           )
-  (include-shared "cassandra/cassandra")
-;;  (include "cassandra/cassandra.scm")
+  (include-shared "cassandra-ffi/cassandra")
+;;  (include "cassandra-ffi/cassandra.scm")
   )

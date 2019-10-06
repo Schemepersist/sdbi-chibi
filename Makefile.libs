@@ -32,10 +32,10 @@ lib/%.c: lib/%.stub
 #lib/%$(SO): lib/%.c
 #	$(CC) $(CLIBFLAGS) $(CLINKFLAGS) $(XCPPFLAGS) $(XCFLAGS) -Os $(LDFLAGS) -o $@ $< -L$(CHIBI_LOCATION_PATH) $(RLDFLAGS) $(XLIBS) -lchibi-scheme -lsqlite3
 
-lib/sdbi/connector/ffi/sqlite3/sqlite3$(SO): lib/sdbi/connector/ffi/sqlite3/sqlite3.c
+lib/srfi/sdbi/connector/sqlite3-ffi/sqlite3$(SO): lib/srfi/sdbi/connector/sqlite3-ffi/sqlite3.c
 	$(CC) $(CLIBFLAGS) $(CLINKFLAGS) $(XCPPFLAGS) $(XCFLAGS) -Os $(LDFLAGS) -o $@ $< -L$(CHIBI_LOCATION_PATH) $(RLDFLAGS) $(XLIBS) -lchibi-scheme -lsqlite3
 
-lib/sdbi/connector/ffi/cassandra/cassandra$(SO): lib/sdbi/connector/ffi/cassandra/cassandra.c
+lib/srfi/sdbi/connector/cassandra-ffi/cassandra$(SO): lib/srfi/sdbi/connector/cassandra-ffi/cassandra.c
 	$(CC) $(CLIBFLAGS) $(CLINKFLAGS) $(XCPPFLAGS) $(XCFLAGS) -Os $(LDFLAGS) -o $@ $< -L$(CHIBI_LOCATION_PATH) $(RLDFLAGS) $(XLIBS) -lchibi-scheme -lcassandra
 
 

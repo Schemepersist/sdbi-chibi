@@ -37,9 +37,9 @@
 lib/.*.meta
 
 # Generated files
-lib/sdbi/connector/ffi/sqlite3/sqlite3.c
-lib/sdbi/connector/ffi/cassandra/simple
-lib/sdbi/connector/ffi/cassandra/cassandra.c
+lib/srfi/sdbi/connector/sqlite3-ffi/sqlite3.c
+lib/srfi/sdbi/connector/cassandra-ffi/simple
+lib/srfi/sdbi/connector/cassandra-ffi/cassandra.c
 *.tgz
 *.html
 *.img

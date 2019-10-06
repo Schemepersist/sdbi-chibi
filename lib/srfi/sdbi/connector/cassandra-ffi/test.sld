@@ -1,4 +1,4 @@
-(define-library (sdbi connector ffi cassandra test)
+(define-library (srfi sdbi connector cassandra-ffi test)
   (export run-tests)
 
   (import (scheme base)
@@ -6,7 +6,7 @@
 
           (chibi test)
 
-          (sdbi connector ffi cassandra))
+          (srfi sdbi connector cassandra-ffi))
 
   (begin
 
@@ -14,7 +14,7 @@
 
     (define (run-tests version-string)
 
-      (test-group "sdbi connector ffi cassandra"
+      (test-group "srfi sdbi connector cassandra-ffi"
 
         (test-group "Preliminary, just test connection"
 

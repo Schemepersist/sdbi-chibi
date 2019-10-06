@@ -28,7 +28,7 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
 
-(define-library (sdbi connector net postgresql misc bytevectors)
+(define-library (srfi sdbi connector postgresql-net misc bytevectors)
   (cond-expand
    (sagittarius
     (import (rnrs)

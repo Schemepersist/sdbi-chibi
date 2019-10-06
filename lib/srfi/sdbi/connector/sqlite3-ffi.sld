@@ -1,4 +1,4 @@
-(define-library (sdbi connector ffi sqlite3)
+(define-library (srfi sdbi connector sqlite3-ffi)
   (export
    ;; constants
    SQLITE_ABORT SQLITE_AUTH SQLITE_BUSY SQLITE_CANTOPEN SQLITE_CONSTRAINT
@@ -25,5 +25,5 @@
    sqlite3-db?
    )
   (import (scheme base) (scheme write) (srfi 130))
-  (include-shared "sqlite3/sqlite3")
-  (include "sqlite3/sqlite3.scm"))
+  (include-shared "sqlite3-ffi/sqlite3")
+  (include "sqlite3-ffi/sqlite3.scm"))

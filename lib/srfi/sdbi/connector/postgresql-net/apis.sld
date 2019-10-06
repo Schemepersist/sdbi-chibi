@@ -28,7 +28,7 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;
 
-(define-library (sdbi connector net postgresql apis)
+(define-library (srfi sdbi connector postgresql-net apis)
   (export make-postgresql-connection
 	  postgresql-connection?
 	  postgresql-open-connection!
@@ -79,10 +79,10 @@
   (import (scheme base)
 	  (scheme write)
 	  (scheme char)
-	  (sdbi connector net postgresql messages)
-	  (sdbi connector net postgresql digest md5)
-	  (sdbi connector net postgresql misc socket)
-	  (sdbi connector net postgresql misc bytevectors))
+	  (srfi sdbi connector postgresql-net messages)
+	  (srfi sdbi connector postgresql-net digest md5)
+	  (srfi sdbi connector postgresql-net misc socket)
+	  (srfi sdbi connector postgresql-net misc bytevectors))
   (cond-expand
    ((library (srfi 19))
     (import (srfi 19))

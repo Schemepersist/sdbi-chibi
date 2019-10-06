@@ -1,4 +1,4 @@
-(define-library (sdbi connector net postgresql test)
+(define-library (srfi sdbi connector postgresql-net test)
   (export run-tests)
 
   (import (scheme base)
@@ -10,11 +10,11 @@
 
           (only (srfi 98) get-environment-variable)
 
-;;          (sdbi connector net postgresql digest md5)
-;;          (sdbi connector net postgresql misc bytevectors)
-;;          (sdbi connector net postgresql misc socket)
-;;          (sdbi connector net postgresql messages)
-          (sdbi connector net postgresql))
+;;          (srfi sdbi connector postgresql-net digest md5)
+;;          (srfi sdbi connector postgresql-net misc bytevectors)
+;;          (srfi sdbi connector postgresql-net misc socket)
+;;          (srfi sdbi connector postgresql-net messages)
+          (srfi sdbi connector postgresql-net))
 
   (begin
 
@@ -22,7 +22,7 @@
 
     (define (run-tests)
 
-      (test-group "sdbi connector net postgresql"
+      (test-group "srfi sdbi connector postgresql-net"
 
         (test-group "Hello, world"
 

@@ -28,7 +28,7 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
 
-(define-library (sdbi connector net postgresql misc io)
+(define-library (srfi sdbi connector postgresql-net misc io)
   (import (scheme base) (scheme case-lambda))
   (cond-expand
    (sagittarius

@@ -28,7 +28,7 @@
 ;;;   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ;;;  
 
-(define-library (sdbi connector net postgresql misc socket)
+(define-library (srfi sdbi connector postgresql-net misc socket)
   (cond-expand
    ((library (srfi 106))
     (import (srfi 106)))

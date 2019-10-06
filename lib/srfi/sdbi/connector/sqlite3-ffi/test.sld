@@ -1,11 +1,11 @@
-(define-library (sdbi connector ffi sqlite3 test)
+(define-library (srfi sdbi connector sqlite3-ffi test)
   (export run-tests)
 
   (import (scheme base)
 
           (chibi test)
 
-          (sdbi connector ffi sqlite3))
+          (srfi sdbi connector sqlite3-ffi))
 
   (begin
 
@@ -13,7 +13,7 @@
 
     (define (run-tests)
 
-      (test-group "sdbi connector ffi sqlite3"
+      (test-group "srfi sdbi connector sqlite3-ffi"
 
         (test-group "Hello, world"
 
