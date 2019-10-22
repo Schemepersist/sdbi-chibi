@@ -2,7 +2,9 @@
 
 (define-library (srfi sdbi objects)
   (export
-    make-db-chain db-chain? db-chain:foo db-chain:set-foo!
+
+    make-db-chain db-chain?
+    db-chain:connection-open-proc
 
 
 
@@ -13,9 +15,11 @@
   (begin
 
     (define-record-type DB-Chain
-      (make-db-chain foo)
+      (make-db-chain connection-open-proc
+
+                     )
       db-chain?
-      (foo db-chain:foo db-chain:set-foo!))
+      (connection-open-proc db-chain:connection-open-proc))
 
 #|
     (define-record-type DB-Connection
