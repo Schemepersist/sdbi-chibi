@@ -1,13 +1,15 @@
 (define-library (srfi sdbi)
   (export
 
-  make-db-chain db-chain? db-chain:foo db-chain:set-foo!
+   db-chain? db-chain-construct db-chain-dismantle
+
 
 
    )
 
   (import (scheme base)
-
+          (chibi)
+          (srfi sdbi objects)
           )
 
   (include "sdbi/sdbi.scm")
