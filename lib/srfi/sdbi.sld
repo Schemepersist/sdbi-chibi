@@ -9,7 +9,7 @@
 
   (import (scheme base)
           (chibi)
-          (srfi sdbi objects)
+          (srfi sdbi records)
           )
 
   (include "sdbi/sdbi.scm")

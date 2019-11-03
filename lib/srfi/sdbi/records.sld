@@ -1,6 +1,6 @@
 ;; Opaque object types, chain, connection, statement, and result-set
 
-(define-library (srfi sdbi objects)
+(define-library (srfi sdbi records)
   (export
 
     make-db-chain db-chain?
