@@ -4,10 +4,11 @@
   (export
 
     make-db-chain db-chain?
-    db-chain:connection-open-proc
+    db-chain:connection-open-proc db-chain:connection-close-proc
 
 
 
+    make-invoker
     )
 
   (import (scheme base))
@@ -16,10 +17,12 @@
 
     (define-record-type DB-Chain
       (make-db-chain connection-open-proc
-
+                     connection-close-proc
                      )
-      db-chain?
-      (connection-open-proc db-chain:connection-open-proc))
+        db-chain?
+      (connection-open-proc db-chain:connection-open-proc)
+      (connection-close-proc db-chain:connection-close-proc)
+      )
 
 #|
     (define-record-type DB-Connection
@@ -37,4 +40,8 @@
       db-result-set?
       (foo db-result-set:foo db-result-set:set-foo!))
 |#
+
+    (define (make-invoker accessor)
+      (lambda (the-record . args)
+        (apply (accessor the-record) args)))
     ))
